@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { TiltCard } from '@/components/motion/tilt-card'
 import { RoomCard } from '@/components/rooms/room-card'
 import { Reveal } from '@/components/shared/reveal'
 import { SectionHeading } from '@/components/shared/section-heading'
@@ -19,7 +20,9 @@ export function RoomsSection({ locale, dict }: { locale: Locale; dict: Dictionar
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {rooms.map((room, i) => (
           <Reveal as="li" key={room.slug} delay={i * 100}>
-            <RoomCard room={room} locale={locale} dict={dict} />
+            <TiltCard>
+              <RoomCard room={room} locale={locale} dict={dict} />
+            </TiltCard>
           </Reveal>
         ))}
       </ul>

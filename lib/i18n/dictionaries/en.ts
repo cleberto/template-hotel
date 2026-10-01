@@ -45,6 +45,23 @@ const en: Dictionary = {
   ],
   statsQuote:
     'Set between coconut palms and the reef, Corais was born for those seeking the quiet of the sea and the soul of northeastern Brazil.',
+  marquee: {
+    label: 'Nearby beaches',
+    items: ['Porto de Galinhas', 'Muro Alto', 'Maracaípe', 'Cupe', 'Serrambi', 'Praia dos Carneiros', 'Piscinas Naturais'],
+  },
+  immersive: {
+    kicker: 'Immersion',
+    titleStart: 'The sea of',
+    titleEmphasis: 'Porto',
+    titleEnd: 'in motion.',
+    text: 'Warm waters, coral reefs and a horizon that changes color every hour. Move your cursor and feel the tide.',
+    hint: 'Move your cursor over the waves',
+    points: [
+      { value: '300', label: 'sunny days a year' },
+      { value: '18km', label: 'of reef-lined coast' },
+      { value: '4', label: 'beaches within 15 min' },
+    ],
+  },
   about: {
     kicker: 'The Hotel',
     eyebrow: 'Pernambuco-style hospitality',

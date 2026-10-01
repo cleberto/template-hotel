@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CountUp } from '@/components/motion/count-up'
 import { Reveal } from '@/components/shared/reveal'
 import { siteConfig } from '@/config/site'
 import { href, type Locale } from '@/lib/i18n/config'
@@ -11,7 +12,7 @@ export function StatsStrip({ dict }: { dict: Dictionary }) {
         <ul className="grid gap-8 sm:grid-cols-3">
           {dict.stats.map((stat, i) => (
             <Reveal as="li" key={stat.label} delay={i * 120} className="flex items-baseline gap-3">
-              <span className="font-serif text-5xl text-coral">{stat.value}</span>
+              <CountUp value={stat.value} className="font-serif text-5xl text-coral" />
               <span className="text-sm leading-snug">{stat.label}</span>
             </Reveal>
           ))}
@@ -29,7 +30,7 @@ export function AboutSection({ locale, dict }: { locale: Locale; dict: Dictionar
   return (
     <section className="bg-sand">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 md:px-8 lg:grid-cols-2 lg:py-32">
-        <Reveal className="relative">
+        <Reveal className="reveal-clip relative">
           <img
             src="/images/hotel-exterior.webp"
             alt={dict.gallery.images['hotel-exterior']}

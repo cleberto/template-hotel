@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
+import { ViewTransition } from 'react'
+import { ScrollProgress } from '@/components/motion/scroll-progress'
+import { SmoothScroll } from '@/components/motion/smooth-scroll'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SiteHeader } from '@/components/layout/site-header'
 import { WhatsAppButton } from '@/components/layout/whatsapp-button'
@@ -49,8 +52,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
         >
           {dict.nav.skip}
         </a>
+        <ScrollProgress />
+        <SmoothScroll />
         <SiteHeader locale={lang} dict={dict} />
-        <main id="conteudo">{children}</main>
+        <ViewTransition default="page">
+          <main id="conteudo">{children}</main>
+        </ViewTransition>
         <SiteFooter locale={lang} dict={dict} />
         <WhatsAppButton label={dict.cta.whatsapp} message={dict.booking.message} />
         <HotelJsonLd locale={lang} description={dict.meta.description} />

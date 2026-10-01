@@ -40,7 +40,7 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
     <section className="relative flex min-h-svh items-end overflow-hidden bg-ocean text-white md:items-center">
       <video
         ref={videoRef}
-        className="animate-hero-zoom absolute inset-0 size-full object-cover"
+        className="animate-hero-zoom hero-parallax absolute inset-0 size-full object-cover"
         poster={siteConfig.video.poster}
         autoPlay
         muted
@@ -54,7 +54,7 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
       <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-28 pt-32 md:px-8 md:pb-0">
+      <div className="hero-content relative mx-auto w-full max-w-7xl px-5 pb-28 pt-32 md:px-8 md:pb-0">
         <p className="kicker mb-6 text-white/85 [animation-delay:200ms] animate-in fade-in slide-in-from-bottom-4 duration-1000 fill-mode-both">
           {dict.hero.eyebrow}
         </p>
