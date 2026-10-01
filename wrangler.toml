@@ -4,9 +4,3 @@ compatibility_date = "2026-09-30"
 [assets]
 directory = "./out"
 binding = "ASSETS"
-
-# Variáveis públicas (não secretas).
-# A chave da Google Places API deve ser configurada como SECRET:
-#   npx wrangler pages secret put GOOGLE_PLACES_API_KEY
-[vars]
-GOOGLE_PLACE_ID = ""
