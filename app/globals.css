@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --color-ocean: var(--ocean);
+  --color-ocean-foreground: var(--ocean-foreground);
+  --color-sand: var(--sand);
+  --color-coral: var(--coral);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Areia, oceano profundo e coral */
+  --background: oklch(0.965 0.014 80);
+  --foreground: oklch(0.22 0.025 220);
+  --sand: oklch(0.93 0.022 78);
+  --ocean: oklch(0.32 0.06 210);
+  --ocean-foreground: oklch(0.97 0.012 80);
+  --coral: oklch(0.6 0.15 38);
+
+  --card: oklch(0.985 0.008 80);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.985 0.008 80);
+  --popover-foreground: var(--foreground);
+  --primary: var(--coral);
+  --primary-foreground: oklch(0.985 0.008 80);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--sand);
+  --muted-foreground: oklch(0.45 0.025 220);
+  --accent: oklch(0.9 0.035 200);
+  --accent-foreground: var(--ocean);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.86 0.02 78);
+  --input: oklch(0.86 0.02 78);
+  --ring: var(--coral);
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-balance;
+    font-optical-sizing: auto;
+  }
+}
+
+@layer components {
+  .kicker {
+    @apply flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em];
+  }
+  .kicker::before {
+    content: '';
+    @apply h-px w-8 bg-current opacity-60;
+  }
+}
+
+/* Reveal ao rolar — ativado por components/reveal.tsx */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+.animate-hero-zoom {
+  animation: hero-zoom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.animate-scroll-cue {
+  animation: scroll-cue 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-hero-zoom,
+  .animate-scroll-cue {
+    animation: none;
+  }
+}
+
+/* Leaflet: harmoniza controles com o tema */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--sand);
+}
+.leaflet-control-attribution {
+  font-size: 10px;
+}

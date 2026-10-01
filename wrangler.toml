@@ -1,0 +1,9 @@
+name = "corais-hotel"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "out"
+
+# Variáveis públicas (não secretas).
+# A chave da Google Places API deve ser configurada como SECRET:
+#   npx wrangler pages secret put GOOGLE_PLACES_API_KEY
+[vars]
+GOOGLE_PLACE_ID = ""

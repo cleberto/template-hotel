@@ -1,0 +1,8 @@
+# Atalhos amigáveis em português -> rotas reais
+/reservas        /pt/booking/      301
+/acomodacoes     /pt/rooms/        301
+/experiencias    /pt/experiences/  301
+/localizacao     /pt/location/     301
+/galeria         /pt/gallery/      301
+/contato         /pt/contact/      301
+/hotel           /pt/about/        301
