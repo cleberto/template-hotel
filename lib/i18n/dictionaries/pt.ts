@@ -43,6 +43,23 @@ const pt = {
   ],
   statsQuote:
     'Erguido entre coqueiros e o recife, o Corais nasceu para quem busca o silêncio do mar e a alma do Nordeste.',
+  marquee: {
+    label: 'Praias próximas',
+    items: ['Porto de Galinhas', 'Muro Alto', 'Maracaípe', 'Cupe', 'Serrambi', 'Praia dos Carneiros', 'Piscinas Naturais'],
+  },
+  immersive: {
+    kicker: 'Imersão',
+    titleStart: 'O mar de',
+    titleEmphasis: 'Porto',
+    titleEnd: 'em movimento.',
+    text: 'Águas mornas, recifes de coral e um horizonte que muda de cor a cada hora. Mova o cursor e sinta a maré.',
+    hint: 'Mova o cursor sobre as ondas',
+    points: [
+      { value: '300', label: 'dias de sol por ano' },
+      { value: '18km', label: 'de litoral com recifes' },
+      { value: '4', label: 'praias a menos de 15 min' },
+    ],
+  },
   about: {
     kicker: 'O Hotel',
     eyebrow: 'O jeito pernambucano de receber',

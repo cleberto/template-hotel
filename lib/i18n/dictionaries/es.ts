@@ -45,6 +45,23 @@ const es: Dictionary = {
   ],
   statsQuote:
     'Entre cocoteros y arrecifes, Corais nació para quienes buscan el silencio del mar y el alma del nordeste brasileño.',
+  marquee: {
+    label: 'Playas cercanas',
+    items: ['Porto de Galinhas', 'Muro Alto', 'Maracaípe', 'Cupe', 'Serrambi', 'Praia dos Carneiros', 'Piscinas Naturais'],
+  },
+  immersive: {
+    kicker: 'Inmersión',
+    titleStart: 'El mar de',
+    titleEmphasis: 'Porto',
+    titleEnd: 'en movimiento.',
+    text: 'Aguas templadas, arrecifes de coral y un horizonte que cambia de color cada hora. Mueve el cursor y siente la marea.',
+    hint: 'Mueve el cursor sobre las olas',
+    points: [
+      { value: '300', label: 'días de sol al año' },
+      { value: '18km', label: 'de costa con arrecifes' },
+      { value: '4', label: 'playas a menos de 15 min' },
+    ],
+  },
   about: {
     kicker: 'El Hotel',
     eyebrow: 'La hospitalidad de Pernambuco',

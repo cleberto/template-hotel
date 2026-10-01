@@ -1,6 +1,6 @@
 'use client'
 
-import { type ElementType, type ReactNode, useEffect, useRef } from 'react'
+import { type ReactNode, type RefObject, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 export function Reveal({
@@ -10,7 +10,7 @@ export function Reveal({
   className,
 }: {
   children: ReactNode
-  as?: ElementType
+  as?: 'div' | 'li' | 'section' | 'article' | 'span' | 'p'
   delay?: number
   className?: string
 }) {
@@ -33,7 +33,7 @@ export function Reveal({
   }, [])
 
   return (
-    <Tag ref={ref} className={cn('reveal', className)} style={{ '--reveal-delay': `${delay}ms` } as React.CSSProperties}>
+    <Tag ref={ref as RefObject<HTMLDivElement & HTMLLIElement>} className={cn('reveal', className)} style={{ '--reveal-delay': `${delay}ms` } as React.CSSProperties}>
       {children}
     </Tag>
   )

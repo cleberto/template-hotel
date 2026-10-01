@@ -139,9 +139,146 @@
   animation: scroll-cue 2s ease-in-out infinite;
 }
 
+/* Reveal com máscara: a imagem "abre" de baixo para cima */
+.reveal.reveal-clip {
+  transform: none;
+}
+.reveal-clip img {
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.15);
+  transition:
+    clip-path 1.3s cubic-bezier(0.7, 0, 0.2, 1),
+    transform 1.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal-clip.is-visible img {
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* Transição entre páginas (View Transitions API) */
+::view-transition-old(.page) {
+  animation: page-out 0.35s cubic-bezier(0.4, 0, 1, 1) both;
+}
+::view-transition-new(.page) {
+  animation: page-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-24px);
+    filter: blur(6px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    clip-path: inset(12% 0 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Barra de progresso e parallax do hero — CSS puro (scroll-driven) */
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    transform: scaleX(0);
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+  .hero-parallax {
+    animation:
+      hero-zoom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+      hero-drift linear both;
+    animation-timeline: auto, scroll(root);
+    animation-range: normal, 0 100svh;
+  }
+  .hero-content {
+    animation: hero-content-out linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 80svh;
+  }
+}
+@keyframes grow-x {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes hero-drift {
+  to {
+    translate: 0 18%;
+  }
+}
+@keyframes hero-content-out {
+  to {
+    opacity: 0;
+    translate: 0 -12%;
+  }
+}
+
+/* Marquee de praias */
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Cartões com inclinação 3D */
+.tilt-perspective {
+  perspective: 1000px;
+}
+.tilt-card {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s;
+  will-change: transform;
+}
+.tilt-card:hover {
+  transition-duration: 0.15s;
+  box-shadow: 0 30px 60px -25px oklch(0.32 0.06 210 / 0.45);
+}
+.tilt-shine {
+  opacity: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), oklch(1 0 0 / 0.28), transparent 45%);
+  transition: opacity 0.4s;
+}
+.tilt-card:hover .tilt-shine {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .reveal-clip img {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+  .hero-parallax,
+  .hero-content,
+  .marquee-track {
+    animation: none !important;
+  }
+  .tilt-card {
+    transform: none;
+  }
+  ::view-transition-old(.page),
+  ::view-transition-new(.page) {
+    animation: none;
   }
   .reveal {
     opacity: 1;
